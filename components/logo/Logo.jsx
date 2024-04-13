@@ -1,48 +1,82 @@
-import React from "react";
-import styled from "styled-components";
-import brandLight from './logo.png';
-import brandDark from './logo-dark.png';
-import Image from "next/image";
+"use client";
+import React, { useEffect } from "react";
+import { useAnimation, motion } from "framer-motion";
 
-const MainBrand = styled.div`
-   img{
-    width : ${props => props.width};
-    max-width: 100%;
-    height: ${props => props.height};
-   }
-   .v-light & , & {
-        .logo-dark{
-           display : block ;     
-        }
-        .logo-light{
-            display : none;    
-        }
-   }
-    
-   .v-dark & {
-       .logo-dark{
-           display : none ;     
-        }
-        .logo-light{
-            display : block;    
-        }
-   }
-   
-`;
+const Logo = () => {
+  const controlsLineOne = useAnimation();
+  const controlsLineTwo = useAnimation();
+  const controlsRectangle = useAnimation();
 
-const Logo = ({width, height, alt}) => {
+  useEffect(() => {
+    const sequence = async () => {
+      // Line animations
+      controlsLineOne.start({
+        pathLength: [0.5, 0.005, 0.5],
+        pathOffset: [0, 0, 0.5],
+        transition: { duration: 2, ease: "linear", repeat: Infinity },
+      });
 
+      controlsLineTwo.start({
+        pathLength: [0.5, 0.005, 0.5],
+        pathOffset: [0, 0, 0.5],
+        transition: { duration: 2, ease: "linear", repeat: Infinity },
+      });
 
+      // Rectangle animation
+      controlsRectangle.start({
+        x: [0, 100], // Adjust these values based on the desired motion path
+        y: [0, 50], // Adjust these values based on the desired motion path
+        transition: { duration: 2, repeat: Infinity },
+      });
+    };
 
-    return (
-        <MainBrand className="main-brand" width={width} height={height}>
-            <Image className="logo-light" src={brandLight?.src} alt={`${alt} - logo light`} width={320} height={84}/>
-            <Image className="logo-dark" src={brandDark?.src} alt={`${alt} - logo dark`} width={320} height={84}/>
-        </MainBrand>
-    );
-}
+    sequence();
+  }, [controlsLineOne, controlsLineTwo, controlsRectangle]);
 
-MainBrand.defaultProps = {width: '80px', height: 'auto'}
-Logo.defaultProps = {alt: "Eremia"}
+  return (
+    <div className="relative h-32 w-32" width={80} height={60}>
+      <svg
+        className="absolute block left-0 top-0 h-16 w-16"
+        preserveAspectRatio="xMidYMid meet"
+        height="300"
+        width="600"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 600 300" // Corrected from 'viewport' to 'viewBox'
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      >
+        <motion.path
+          d="M0,90L150,90M150,90Q158,60 162,87T167,95 170,88 173,92t6,35 7,-60T190,127 197,107s2,-11 10,-10 1,1 8,-10T219,95c6,4 8,-6 10,-17s2,10 9,11h110"
+          stroke="rgba(155,55,255,0.4)"
+          fill="none"
+          strokeWidth="3"
+          strokeLinejoin="round"
+          style={{ overflow: "visible" }}
+          animate={controlsLineOne}
+        />
+        <motion.path
+          d="M0,90L150,90M150,90Q158,60 162,87T167,95 170,88 173,92t6,35 7,-60T190,127 197,107s2,-11 10,-10 1,1 8,-10T219,95c6,4 8,-6 10,-17s2,10 9,11h110"
+          stroke="#00AEAA"
+          fill="none"
+          strokeWidth="1"
+          strokeLinejoin="round"
+          style={{ overflow: "visible" }}
+          animate={controlsLineTwo}
+        />
+        <motion.rect
+          x="-3"
+          y="-4"
+          height="8"
+          width="6"
+          rx="20"
+          ry="20"
+          fill="red"
+          animate={controlsRectangle}
+        />
+      </svg>
+    </div>
+  );
+};
+
+Logo.defaultProps = { alt: "Fullscreen" };
 
 export default React.memo(Logo);
