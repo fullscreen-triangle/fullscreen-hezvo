@@ -1,6 +1,8 @@
+"use client";
 const { useState, useEffect, useMemo } = React;
 import * as d3 from "d3";
-import Globe from "react-globe.gl";
+import dynamic from "next/dynamic";
+const Globe = dynamic(import("react-globe.gl"), { ssr: false });
 
 const Sub10s = () => {
   const [countries, setCountries] = useState({ features: [] });

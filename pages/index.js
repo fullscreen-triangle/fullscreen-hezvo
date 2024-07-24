@@ -21,9 +21,12 @@ import NextPage from "../components/next/NextPage";
 import Footer from "../components/footer/Footer";
 import ModalContact from "../components/model-right/ModalContact";
 import HeaderNormal from "../components/header/HeaderNormal";
-import Quotes from "components/end-of-history/Quotes";
-import Resume from "../components/resume/Resume";
 import Sub10s from "components/maps/globes/Sub10s";
+import FastestNations from "components/maps/globes/FastestNations";
+import MedalScoreGlobe from "components/maps/globes/MedalScoreGlobe";
+import BerlinHundredHeat from "components/maps/mapbox-gl/BerlinHundredHeat";
+import HundredMetresCamera from "components/maps/mapbox-gl/HundredMetresCamera";
+import Resume from "../components/resume/Resume";
 import Head from "next/head";
 import Image from "next/image";
 import Skills, { SkillProgressBar } from "../components/skill/Skills";
@@ -69,11 +72,16 @@ function Home() {
         data-dsn-title="End of History"
       />
 
-      <div className="p-relative v-dark-head text-center">
-        <div className="v-middle z-index-1">
-          <ButtonPopup href="/videos/UsainBoltvUsainBolt.mp4" />
-        </div>
-      </div>
+      <ParallaxImage
+        alt={""}
+        src={
+          "/img/fullscreen/sprint-running/jamaicas-usain-bolt-crosses-the-fin.jpg"
+        }
+        height={"80vh"}
+        parallaxFrom={{ scale: 1.3 }}
+        parallax={{ scale: 1 }}
+        overlay={5}
+      />
 
       <HeaderNormal container={"container"}>
         <h1 className="title text-uppercase">
@@ -154,90 +162,62 @@ function Home() {
         </DsnGrid>
       </div>
 
-      <div className="section-margin" data-dsn-title="Quotes">
-        <Quotes
-          className="container section-margin"
-          title="Comments from Experts"
-          skin={["testimonials-half"]}
-          backgroundColor={"background-section"}
-          desktop={{ slidesPerView: 2 }}
-          mobile={{ slidesPerView: 1 }}
-          speed={1000}
-          grabCursor
-          loop
-          loopedSlides={2}
-          parallax
-          parallaxImage={{ "data-swiper-parallax-scale": 0.7 }}
-          parallaxContent={{
-            "data-swiper-parallax-opacity": 0,
-            "data-swiper-parallax": "30%",
-          }}
-        >
-          <SwiperPagination
-            className={`justify-content-between dsn-container mt-30`}
-          />
-        </Quotes>
-      </div>
-
-      <ParallaxImage
-        alt={""}
-        src={
-          "/img/fullscreen/sprint-running/jamaicas-usain-bolt-crosses-the-fin.jpg"
-        }
-        height={"80vh"}
-        parallaxFrom={{ scale: 1.3 }}
-        parallax={{ scale: 1 }}
-        overlay={5}
-      />
-      {/*End Parallax Img*/}
-
       <section
         className="section-padding  background-section"
-        data-dsn-title="Accomplishments"
+        data-dsn-title="WCA London"
       >
         <div className="container">
-          <TitleSection description="Accomplishments">
-            Education & Experience
-          </TitleSection>
+          <TitleSection description="WCA London">Last Race</TitleSection>
           <DsnGrid col={2}>
-            <Resume title="Education">
-              <Resume.item title="University of Studies">
+            <Resume title="Competition">
+              <Resume.item title="Lineup">
+                <p className="max-w570"></p>
+              </Resume.item>
+
+              <Resume.item title="Favourites">
                 <p className="max-w570">
-                  Duis posuere, quam non imperdiet egestas, eros enim mattis
-                  mauris, in posuere lacus arcu quis felis. Etiam interdum erat
-                  non enim venenatis fermentum.
+                  This was the last opportunity any sprinter had in achieving
+                  the esteemed dream of defeating Usain Bolt in a race. During
+                  that season, Bolt had averaged 9.95s and was competing against
+                  a respectable lineup consisting of Simbine, de Grasse, Gatlin,
+                  Coleman, Blake who had all posted marks faster than 9.80s.
+                  Another brilliant athlete, Su Bingtin from PCR, who was still
+                  a regular at the time, later on became the first Asian athlete
+                  to run a sub 10s.
                 </p>
               </Resume.item>
 
-              <Resume.item title="Doctoral Degree">
+              <Resume.item title="Retirement">
                 <p className="max-w570">
-                  Aliquam tincidunt malesuada tortor vitae iaculis. In eu turpis
-                  iaculis, feugiat risus quis, aliquet urna. Quisque fringilla
-                  mollis risus, eu pulvinar dolor.
-                </p>
-              </Resume.item>
-
-              <Resume.item title="University of Studies">
-                <p className="max-w570">
-                  Maecenas finibus nec sem ut imperdiet. Ut tincidunt est ac
-                  dolor aliquam sodales. Phasellus sed mauris hendrerit, laoreet
-                  sem in, lobortis ante.
+                  After Rio 2016, Usain Bolt wept for there was no other way he
+                  could win. He performed consistantly throughout his carrear
+                  with age seeming to play no role. The varince in his
+                  performance was largely dependent on his weight and the
+                  tailwind speed. Its no suprise that, he ran the fastest, on
+                  the race he had the highest allowed tailwind. Had it not been
+                  for that one factor, predictions suggest that the 9.58s would
+                  have been set in Beijing 2015 instead of Berlin 2009.
                 </p>
               </Resume.item>
             </Resume>
 
-            <Resume title="Education">
-              <Resume.item title="University of Studies">
-                <h6>Senior UX / UI Designer</h6>
+            <Resume title="Adjusted Time">
+              <Resume.item title="Time Correction">
+                <h6>Omission</h6>
                 <p className="max-w570 mt-10">
-                  Praesent dignissim sollicitudin justo, sed elementum quam
-                  lacinia quis. Phasellus eleifend tristique posuere. Sed vitae
-                  dui nec magna.
+                  The global timer starts the clock as soon as the gun goes off.
+                  Anticipating the gun is discouraged through enforcement of the
+                  false start. A reaction time legality starts at 0.1s and is
+                  relevant only in certifying a fair start. The actual true time
+                  that it takes an athlete to complete the race is lower and
+                  even more so in slower athletes. Bolt recorded 9.58s after
+                  spending 0.146s in the blocks which adjusts his true legal
+                  time to 9.434s.
                 </p>
               </Resume.item>
 
-              <Resume.item title="Doctoral Degree">
-                <h6>DDB Athens ( Tribal )</h6>
+              <Resume.item title="Drive">
+                <h6>Acceleration</h6>
                 <p className="max-w570 mt-10">
                   Maecenas tempus faucibus rutrum. Duis eu aliquam urna. Proin
                   vitae nulla tristique, ornare felis id, congue libero. Nam
@@ -261,7 +241,7 @@ function Home() {
               <div className="box-inner-img p-absolute">
                 <Image
                   className={"cover-bg-img"}
-                  src="/img/help-project.jpg"
+                  src="/img/fullscreen/ancient/pythagoras.jpg"
                   alt=""
                   fill
                 />
@@ -269,7 +249,7 @@ function Home() {
               <div className="box-inner-img p-absolute">
                 <Image
                   className={"cover-bg-img"}
-                  src="/img/help2.jpg"
+                  src="/img/fullscreen/gifs/usain-bolt-comparison.gif"
                   alt=""
                   fill
                 />
@@ -278,16 +258,16 @@ function Home() {
             <div className="box-information">
               <TitleSection
                 className="align-items-start mb-50"
-                description="CAPABILITIES"
+                description="Is it wrong to be strong"
                 defaultSpace={false}
-              >
-                We help to create visual strategies.
-              </TitleSection>
+              ></TitleSection>
               <p className="mb-30">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-                obcaecati autem distinctio veritatis excepturi, fugit iste
-                repellendus, porro delectus rem ducimus cum fugiat, magnam
-                voluptates cumque? Consequatur eos debitis sit?
+                Most people assume that, had Usain Bolt apparently not
+                celebrated, he would have recorded a faster mark. 9.69s was
+                extremely fast for that day and it came as a shock to everyone.
+                Usain Bolt had only transitioned to 100m sprinting just 8 months
+                before the event and it was the very first of 3 occasions that
+                any athlete had run sub 9.7s.
               </p>
               <Skills>
                 <SkillProgressBar number={85}>Web Design</SkillProgressBar>
@@ -302,6 +282,8 @@ function Home() {
           </DsnGrid>
         </div>
       </section>
+
+      {/*End Parallax Img*/}
 
       <div className="container section-margin" data-dsn-title="Our Services">
         <TitleSection description={"Our Services"}>

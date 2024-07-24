@@ -1,5 +1,7 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
-import Globe from "react-globe.gl";
+import dynamic from "next/dynamic";
+const Globe = dynamic(import("react-globe.gl"), { ssr: false });
 
 const MedalScoreGlobe = ({ datasetUrl }) => {
   const globeEl = useRef();

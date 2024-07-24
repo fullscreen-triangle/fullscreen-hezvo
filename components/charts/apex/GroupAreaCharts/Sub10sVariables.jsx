@@ -130,9 +130,7 @@ const Sub10sVariables = () => {
           <div className="flex space-x-3">
             <div
               className={`${stat.bg} ${stat.text} h-12 w-12 rounded-full flex items-center justify-center text-2xl`}
-            >
-              <Icon icon={stat.icon} />
-            </div>
+            ></div>
             <div>
               <div className="text-sm mb-1 font-medium">{stat.title}</div>
               <div className="text-lg font-medium">{stat.count}</div>

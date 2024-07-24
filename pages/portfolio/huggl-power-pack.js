@@ -6,41 +6,46 @@ import ParallaxImage from "../../components/Image/ParallaxImage";
 import DsnGrid from "../../layout/DsnGrid";
 import Layout from "../../layout/Layout";
 import NextProject from "../../components/next/NextProject";
-import {getPortfolioItem} from "../../data/portfolio";
+import { getPortfolioItem } from "../../data/portfolio";
 import HeaderFull from "../../components/header/HeaderFull";
 import Image from "next/image";
 
 function Project3(params) {
-  const heroData = getPortfolioItem('huggl-power-pack');
+  const heroData = getPortfolioItem("huggl-power-pack");
   return (
-      <Layout>
-        <HeaderFull className="dsn-container"
-                    alignItems="end"
-                    heroContent={heroData} overlay={heroData.overlay}/>
+    <Layout>
+      <HeaderFull
+        className="dsn-container"
+        alignItems="end"
+        heroContent={heroData}
+        overlay={heroData.overlay}
+      />
 
-        {/*Start Intro Project*/}
+      {/*Start Intro Project*/}
       <section className="intro-project container section-margin">
-        <DsnGrid customGrid={{desktop:"40% 60%"}}>
+        <DsnGrid customGrid={{ desktop: "40% 60%" }}>
           <div className="intro-project-left">
-            <h4 className="title-block text-uppercase mb-20">Project</h4>
+            <h4 className="title-block text-uppercase mb-20">Asafa Powell</h4>
             <ul className="intro-project-list">
               <li className="p-relative">
-                <strong>Agency</strong>Immersive interactive gallery
+                <strong>Legacy</strong>The highest number of sub 10 performances
               </li>
               <li className="p-relative">
-                <strong>creating</strong>Gianni Teruzzi
+                <strong>by far</strong>98 legal marks
               </li>
               <li className="p-relative">
-                <strong> Published</strong>November 24th 2016
+                <strong> out of a total of </strong> 199 legal marks
               </li>
             </ul>
           </div>
           <div className="intro-project-right">
-            <h4 className="title-block text-uppercase mb-20">info</h4>
+            <h4 className="title-block text-uppercase mb-20">Record</h4>
             <p className="intro-project-description">
-              Huggl is an induction charging, portable power pack that uses
-              alternative materials to stimulate new product experiences and
-              higher social interactions.
+              Even though he has never recorded below 9.71s,he still has a 9.72s
+              best performance that ranks fourth on the fastest senior mens
+              times. He holds the world record for the 100yards race at 9,09s
+              and was the world record holder for a brief period between 2005
+              and 2008.
             </p>
             <div className="intro-project-cat mt-30">
               <span className="cat-item"> Arthur Kenzo</span>
@@ -63,9 +68,11 @@ function Project3(params) {
       {/*Start Parallax Img*/}
       <ParallaxImage
         alt={""}
-        src={"/img/project/project3/2.jpg"}
+        src={
+          "/img/fullscreen/sprint-running/beijing-the-athletes-start-the-mens-100m-semi-final-2-at-the-national-stadium-on-day-8-of-the.jpg"
+        }
         overlay={3}
-        caption="asdsadsa"
+        caption="most"
       />
       {/*End Parallax Img*/}
 
@@ -99,8 +106,14 @@ function Project3(params) {
             These lights also provide guidance on power pack charge.
           </h4>
 
-          <Image className="w-100" alt={""} src={"/img/project/project3/6.gif"} width={1200} height={700}
-               sizes="100vw" />
+          <Image
+            className="w-100"
+            alt={""}
+            src={"/img/project/project3/6.gif"}
+            width={1200}
+            height={700}
+            sizes="100vw"
+          />
           <p className="dsn-up mt-30 ml-auto mr-auto max-w570">
             The LEDs are activated by holding the mAh button on the back, next
             to the power button; both of which help avoid accidental power use
@@ -110,7 +123,10 @@ function Project3(params) {
       </section>
       {/*End Intro Project*/}
 
-      <NextProject heroContent={getPortfolioItem('principal-garden')} number={2}  />
+      <NextProject
+        heroContent={getPortfolioItem("principal-garden")}
+        number={2}
+      />
     </Layout>
   );
 }

@@ -1,6 +1,8 @@
+"use client";
 import * as THREE from "three";
 import React, { useEffect, useRef } from "react";
-import Globe from "react-globe.gl";
+import dynamic from "next/dynamic";
+const Globe = dynamic(import("react-globe.gl"), { ssr: false });
 const Clouds = () => {
   const globeEl = useRef();
 
