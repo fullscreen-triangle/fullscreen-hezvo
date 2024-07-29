@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import * as turf from "@turf/turf";
@@ -8,8 +9,12 @@ const RouteCamera = () => {
 
   useEffect(() => {
     const loadFiles = [
-      fetch("yoshida_route.geojson").then((response) => response.json()),
-      fetch("camera_route.geojson").then((response) => response.json()),
+      fetch("/data/maps/olympia-stadion-hundred-sprinter.geojson").then(
+        (response) => response.json(),
+      ),
+      fetch("/data/maps/olympia-stadion-hundred-camera.geojson").then(
+        (response) => response.json(),
+      ),
     ];
 
     Promise.all(loadFiles).then(function (data) {

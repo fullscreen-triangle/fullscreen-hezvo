@@ -2,27 +2,46 @@ import React, { useEffect, useState } from "react";
 import crossfilter from "crossfilter2";
 import * as d3 from "d3";
 import { BarChart, LineChart, ChartContext } from "react-dc-js";
-import sprintData from "./sprintData.json"; // Importing data from a local JSON file
 
 const AllTimesHundredFilter = () => {
   const [cx, setCx] = useState(null);
+  const [data, setData] = useState(null);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("/data/Alltimes100m.json");
+      const jsonData = await response.json();
+      return jsonData;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return null;
+    }
+  };
 
   useEffect(() => {
-    const data = sprintData.map((d) => {
-      const dateFormatParser = d3.timeParse("%d.%m.%Y");
-      return {
-        ...d,
-        Time: +d.Time, // Convert string time to number for calculations
-        Date: dateFormatParser(d.Date), // Format the date
-        DOB: dateFormatParser(d.DOB), // Format the DOB
-      };
-    });
+    const loadData = async () => {
+      const sprintData = await fetchData();
+      if (sprintData) {
+        const formattedData = sprintData.map((d) => {
+          const dateFormatParser = d3.timeParse("%d.%m.%Y");
+          return {
+            ...d,
+            Time: +d.Time, // Convert string time to number for calculations
+            Date: dateFormatParser(d.Date), // Format the date
+            DOB: dateFormatParser(d.DOB), // Format the DOB
+          };
+        });
 
-    const cx = crossfilter(data);
-    setCx(cx);
+        setData(formattedData);
+        const cx = crossfilter(formattedData);
+        setCx(cx);
+      }
+    };
+
+    loadData();
   }, []);
 
-  if (!cx) {
+  if (!cx || !data) {
     return <p>Loading Data...</p>;
   }
 

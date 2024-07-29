@@ -1,5 +1,5 @@
 "use client";
-const { useState, useEffect, useMemo } = React;
+import React, { useState, useEffect, useMemo } from "react";
 import * as d3 from "d3";
 import dynamic from "next/dynamic";
 const Globe = dynamic(import("react-globe.gl"), { ssr: false });
