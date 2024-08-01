@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
-import Service from "../Service";
 import { getSub10Data } from "../../../data/sub10";
 import Button from "../components/button/Button";
 import TitleSection from "../components/heading/TitleSection";
@@ -11,10 +10,7 @@ import BrandClientSwiper from "../components/brand-client/BrandClientSwiper";
 import Facts from "../components/facts/Facts";
 import ParallaxImage from "../components/Image/ParallaxImage";
 import ServiceOne from "../components/services/grid/ServiceOne";
-import Portfolio from "../components/portfolio/Portfolio";
-import Testimonial from "../components/testimonial/Testimonial";
-import SwiperPagination from "../components/swiper-pagination/SwiperPagination";
-import BlogSwiper from "../components/bolg/BlogSwiper";
+
 import NextPage from "../components/next/NextPage";
 
 const SubTenAverages = () => {

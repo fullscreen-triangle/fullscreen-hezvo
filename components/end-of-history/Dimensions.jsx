@@ -1,6 +1,4 @@
 import ParallaxImage from "../components/Image/ParallaxImage";
-import HeaderNormal from "../components/header/HeaderNormal";
-import MetaPost from "../components/meta/MetaPost";
 import ButtonPopup from "../components/button-popup/ButtonPopup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";

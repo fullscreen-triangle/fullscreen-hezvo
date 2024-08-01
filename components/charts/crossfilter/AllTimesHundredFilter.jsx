@@ -53,28 +53,43 @@ const AllTimesHundredFilter = () => {
   const timeByAthleteGroup = athleteDimension.group().reduceSum((d) => d.Time);
 
   return (
-    <div className="App">
-      <ChartContext>
-        <LineChart
-          width={990}
-          height={200}
-          dimension={dateDimension}
-          group={timeByDateGroup}
-          x={d3.scaleTime().domain(d3.extent(data, (d) => d.Date))}
-          elasticY={true}
-          renderHorizontalGridLines={true}
-          brushOn={false}
-        />
-        <BarChart
-          width={990}
-          height={180}
-          dimension={athleteDimension}
-          group={timeByAthleteGroup}
-          x={d3.scaleBand()}
-          xUnits={d3.scaleBand}
-          elasticY={true}
-        />
-      </ChartContext>
+    <div className="flex bg-darkblack-600 mb-[24px] w-full mx-auto overflow-hidden resize m-0 p-0 antialised">
+      <div className="xl:w-66 w-full bg-darkblack-600 flex flex-col justify-between rounded-lg px-6 py-3">
+        <div className="flex justify-between items-center pb-2 mb-2 border-b border-bgray-300">
+          <h3 className="text-white sm:text-2xl text-xl font-bold">
+            All Times Hundred
+          </h3>
+        </div>
+        <div className="w-full text-white font-bold text-2xl leading-[30px]">
+          <ChartContext>
+            <div className="flex flex-col gap-4 rounded-none md:flex-row md:items-center">
+              <LineChart
+                className="w-full h-[255px] px-2 pb-0"
+                width={990}
+                height={200}
+                dimension={dateDimension}
+                group={timeByDateGroup}
+                x={d3.scaleTime().domain(d3.extent(data, (d) => d.Date))}
+                elasticY={true}
+                renderHorizontalGridLines={true}
+                brushOn={false}
+              />
+            </div>
+            <div className="flex flex-col gap-4 rounded-none md:flex-row md:items-center">
+              <BarChart
+                className="w-full h-[160px] px-2 pb-0"
+                width={990}
+                height={180}
+                dimension={athleteDimension}
+                group={timeByAthleteGroup}
+                x={d3.scaleBand()}
+                xUnits={d3.scaleBand}
+                elasticY={true}
+              />
+            </div>
+          </ChartContext>
+        </div>
+      </div>
     </div>
   );
 };

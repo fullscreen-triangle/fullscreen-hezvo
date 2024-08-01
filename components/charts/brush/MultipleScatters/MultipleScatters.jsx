@@ -2,9 +2,6 @@ import * as React from "react";
 import { randomNormal } from "d3-random";
 import { range } from "d3-array";
 import Scatterplot from "./Scatterplot";
-
-import ScatterplotWithZoom from "./ScatterplotWithZoom";
-import ScatterplotWithBrush from "./ScatterplotWithBrush";
 import ScatterplotWithBrushAndZoom from "./ScatterplotWithBrushAndZoom";
 import "./styles.css";
 
@@ -29,7 +26,7 @@ export default function App() {
         </div>
         <div>
           <h4>Zoomable</h4>
-          <ScatterplotWithZoom
+          <ScatterplotWithBrushAndZoom
             data={data}
             width={300}
             height={300}
@@ -38,7 +35,7 @@ export default function App() {
         </div>
         <div>
           <h4>Brushable</h4>
-          <ScatterplotWithBrush
+          <ScatterplotWithBrushAndZoom
             data={data}
             width={300}
             height={300}

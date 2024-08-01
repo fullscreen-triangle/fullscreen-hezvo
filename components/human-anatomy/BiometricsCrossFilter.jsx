@@ -100,4 +100,4 @@ function BiometricsCrossFilter() {
   );
 }
 
-export default App;
+export default BiometricsCrossFilter;
