@@ -1,5 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
-import ReactMapGL from "react-map-gl";
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
+const ReactMapGL = dynamic(import("react-map-gl"), { ssr: false });
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const MAPBOX_TOKEN =

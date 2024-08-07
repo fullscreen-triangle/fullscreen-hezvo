@@ -2,12 +2,12 @@ import React, { useState, useEffect, useMemo } from "react";
 import Map, { Source, Layer } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const MAPBOX_TOKEN = "YOUR_MAPBOX_ACCESS_TOKEN"; // Set your Mapbox access token here
+const MAPBOX_TOKEN = "pk.eyJ1IjoiY2hvbWJvY2hpbm9rb3NvcmFtb3RvIiwiYSI6ImNsYWIzNzN1YzA5M24zdm4xb2txdXZ0YXQifQ.mltBkVjXA6LjUJ1bi7gdRg; // Set your Mapbox access token here
 
 function ControlPanel({ year, onChange, yearRange }) {
   return (
-    <div className="control-panel">
-      <label>Year</label>
+    <div className="flex relative grid grid-cols-12 gap-5 rounded p-1 flex items-center rounded-md mx-auto resize bg-slate-800">
+      <label className="text-slate-200 text-xs font-normal">Year</label>
       <select value={year} onChange={(e) => onChange(e.target.value)}>
         {yearRange.map((year) => (
           <option key={year} value={year}>
@@ -19,14 +19,14 @@ function ControlPanel({ year, onChange, yearRange }) {
   );
 }
 
-export default function App() {
+export default function TimeSlideSub10() {
   const [year, setYear] = useState("");
   const [allData, setAllData] = useState(null);
   const [data, setData] = useState(null);
 
   useEffect(() => {
     // Fetch your dataset
-    fetch("URL_TO_YOUR_DATASET")
+    fetch("/data/sub10s.geojson")
       .then((resp) => resp.json())
       .then((json) => {
         setAllData(json); // Assuming json is the entire GeoJSON dataset
